@@ -12,7 +12,7 @@ jobs:
       run: sudo xcode-select --switch /Applications/Xcode.app
     - name: Build terminal-notifier
       run: |
-        xcodebuild -project terminal-notifier.xcodeproj -scheme terminal-notifier -configuration Release clean build
+        xcodebuild -project "Terminal Notifier.xcodeproj" -scheme terminal-notifier -configuration Release clean build
     - name: Package artifact
       run: |
         cd build/Release
