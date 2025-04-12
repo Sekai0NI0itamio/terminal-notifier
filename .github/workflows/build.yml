@@ -18,7 +18,8 @@ jobs:
     - name: Package artifact
       run: |
         cd DerivedData/Build/Products/Release
-        zip -r ../../../terminal-notifier.zip terminal-notifier.app
+        zip -r "$GITHUB_WORKSPACE/terminal-notifier.zip" terminal-notifier.app
+        ls -l "$GITHUB_WORKSPACE"
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
