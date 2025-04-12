@@ -14,11 +14,11 @@ jobs:
       run: xcodebuild -list -project "Terminal Notifier.xcodeproj"
     - name: Build terminal-notifier
       run: |
-        xcodebuild -project "Terminal Notifier.xcodeproj" -scheme "Terminal Notifier" -configuration Release MACOSX_DEPLOYMENT_TARGET=10.13 clean build
+        xcodebuild -project "Terminal Notifier.xcodeproj" -scheme "Terminal Notifier" -configuration Release -derivedDataPath ./DerivedData MACOSX_DEPLOYMENT_TARGET=10.13 clean build
     - name: Package artifact
       run: |
-        cd build/Release
-        zip -r ../../terminal-notifier.zip terminal-notifier.app
+        cd DerivedData/Build/Products/Release
+        zip -r ../../../terminal-notifier.zip terminal-notifier.app
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
