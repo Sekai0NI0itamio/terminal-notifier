@@ -8,15 +8,15 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install Xcode dependencies
-      run: |
-        sudo xcode-select --install || true
+    - name: Select Xcode version
+      run: sudo xcode-select --switch /Applications/Xcode.app
     - name: Build terminal-notifier
       run: |
-        make
+        xcodebuild -project terminal-notifier.xcodeproj -scheme terminal-notifier -configuration Release clean build
     - name: Package artifact
       run: |
-        zip -r terminal-notifier.zip terminal-notifier.app
+        cd build/Release
+        zip -r ../../terminal-notifier.zip terminal-notifier.app
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
