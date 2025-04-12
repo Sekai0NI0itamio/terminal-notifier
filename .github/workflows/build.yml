@@ -14,7 +14,7 @@ jobs:
       run: xcodebuild -list -project "Terminal Notifier.xcodeproj"
     - name: Build terminal-notifier
       run: |
-        xcodebuild -project "Terminal Notifier.xcodeproj" -scheme "Terminal Notifier" -configuration Release clean build
+        xcodebuild -project "Terminal Notifier.xcodeproj" -scheme "Terminal Notifier" -configuration Release MACOSX_DEPLOYMENT_TARGET=10.13 clean build
     - name: Package artifact
       run: |
         cd build/Release
